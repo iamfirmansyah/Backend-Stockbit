@@ -3,18 +3,19 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class LogRequest extends Model {
+  class Log extends Model {
     static associate(models) {
-        
+      // define association here
     }
   };
-  LogRequest.init({
+  Log.init({
     date: DataTypes.DATE,
     endpoint: DataTypes.STRING,
     parameters: DataTypes.TEXT
   }, {
     sequelize,
-    modelName: 'LogRequest',
+    tableName: 'logs',
+    modelName: 'Logs',
   });
-  return LogRequest;
+  return Log;
 };

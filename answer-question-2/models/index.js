@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
@@ -10,7 +12,14 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: process.env.DB_DIALECT,
+    logging: false,
+    pool: {
+      max: 100,
+      min: 0,
+      acquire: 100 * 1000,
+    },
   }
 );
 
@@ -31,6 +40,6 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-db.Sequelize = Sequelize;
+db.sequelize = sequelize;
 
 module.exports = db;

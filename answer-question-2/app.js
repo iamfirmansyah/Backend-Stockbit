@@ -15,8 +15,8 @@ app.use(cors(corsOptions));
 
 app.use('/', Router);
 
-port = dotenv.parsed.PORT || 3131,
+port = process.env.PORT || 8080;
 
 app.listen(port);
 
-console.log(dotenv.parsed.PORT);
+console.log('Example app listening on post 8080!')
