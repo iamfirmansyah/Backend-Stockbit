@@ -1,5 +1,6 @@
 const { apiSearchMovies, apiDetailsMovies } = require('../repository/api')
 const {response} = require('../services/response') 
+const {recordRequest} = require('../services/logger')
 const axios = require('axios')
 const validator = require('../helpers/validate');
 
@@ -14,6 +15,12 @@ module.exports = {
                 response(res, 400, "failed", err)
             }
         });
+        
+        const splitURL = req.originalUrl.split('?')
+        const endPoint = splitURL[0];
+        const parameters = splitURL[1];
+
+        const log = await recordRequest({ date: new Date(), endpoint: endPoint, parameters: parameters})
 
         try{
             const {filter, page} = req.query
@@ -34,6 +41,12 @@ module.exports = {
                 return response(res, 400, "failed", err)
             } 
         });
+
+        const splitURL = req.originalUrl.split('?')
+        const endPoint = splitURL[0];
+        const parameters = splitURL[1];
+
+        const log = await recordRequest({ date: new Date(), endpoint: endPoint, parameters: parameters})
 
         try{
             const {imdbID} = req.query
