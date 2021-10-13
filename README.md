@@ -14,5 +14,5 @@
 visit **https://backend-stockbit-movies.herokuapp.com/**
 Endpoint list:
 - **/search** | For example: https://backend-stockbit-movies.herokuapp.com/search?filter=batman&page=1
-- **/detail** | For example: https://backend-stockbit-movies.herokuapp.com/details?imdbID=tt3591568
+- **/detail** | For example: https://backend-stockbit-movies.herokuapp.com/detail?imdbID=tt3591568
 
